@@ -14,7 +14,8 @@ $args = array('tag' => 'peche',);
 $query = new WP_Query($args);
 
 // Utiliser la boucle de Wordpress pour afficher les resultats
-// The Loop
+]]
+    
 if ( $the_query->have_posts() ) {
     echo '<ul>';
     while ( $the_query->have_posts() ) {
@@ -25,6 +26,6 @@ if ( $the_query->have_posts() ) {
 } else {
     // Aucun article trouber
 }
-/* Restore original Post Data */
+/* Rester le contenu original */
 wp_reset_postdata();
 
