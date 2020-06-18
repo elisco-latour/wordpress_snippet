@@ -11,9 +11,15 @@ $current_post_ID = get_the_ID();
 // Ici nous recuperons juste le premier element de ce tableau en se basant sur le fait 
 // Qu'il n'y a qu'une seule etiquette par article
 $current_post_tag = get_the_tags($current_post_ID)[0];
+$num_posts = 7; // A choisir a volonte
 
 // Specifier les arguments de la requete
-$args = array('tag' => $current_post_tag,);
+$args = array(
+     'tag' => str_replace(' ', '-',  $current_post_tag), // Remplacer toute espace vide par un tiret
+     'post__not_in' => array($post->ID), // Ne plus selectionner l'article courant
+     'showposts'=>$num_posts,
+     'ignore_sticky_posts'=> 1 // Ignorer les articles epingles
+);
 
 // Il est possible que le tag soit référencé par son id
 // par exemple avec une etiquette dont le id = 15
